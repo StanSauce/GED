@@ -11,7 +11,7 @@ import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
 
 /**
- * Created by mehmetgerceker on 12/7/15.
+ * Edited by Swilliams on 3/30/2020.
  */
 
 public class FollowLinkTest extends TestBase {
@@ -29,14 +29,15 @@ public class FollowLinkTest extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
 
-        this.annotate("Visiting GuineaPig page...");
+        this.annotate("Visiting Page...");
         GuineaPigPage page = GuineaPigPage.visitPage(driver);
 
         this.annotate("Clicking on link...");
-        page.followLink();
+        page.followContactLink();
 
         this.annotate("Asserting that we are on a new page...");
-        Assert.assertFalse(page.isOnPage());
-    }
+        Assert.assertFalse(page.isOnHomePage());
+
+            }
 
 }

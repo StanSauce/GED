@@ -13,13 +13,13 @@ import java.util.UUID;
 
 
 /**
- * Created by mehmetgerceker on 12/7/15.
+ * Created by Swilliams on 3/30/2020.
  */
 
 public class TextInputTest extends TestBase {
 
     /**
-     * Runs a simple test verifying if the comment input is functional.
+     * Runs a simple test verifying search function.
      * @throws InvalidElementStateException
      */
     @org.testng.annotations.Test(dataProvider = "hardCodedBrowsers")
@@ -28,16 +28,19 @@ public class TextInputTest extends TestBase {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
 
-        String commentInputText = UUID.randomUUID().toString();
+        String emailText = "test@test.test";
 
-        this.annotate("Visiting GuineaPig page...");
+        this.annotate("Visiting  page...");
         GuineaPigPage page = GuineaPigPage.visitPage(driver);
 
-        this.annotate(String.format("Submitting comment: \"%s\"", commentInputText));
-        page.submitComment(commentInputText);
+        this.annotate("Load Contact Page");
+        page.followContactLink();
 
-        this.annotate(String.format("Asserting submitted comment is: \"%s\"", commentInputText));
-        Assert.assertTrue(page.getSubmittedCommentText().contains(commentInputText));
+        this.annotate(String.format("Enter Email: \"%s\"", emailText));
+        page.submitEmail(emailText);
+
+        //Assert.assertTrue(page.emailInForm() == emailText);
+        Assert.assertEquals(page.emailInForm(), emailText, "Email in Form Element");
     }
 
 }

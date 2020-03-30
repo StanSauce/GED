@@ -26,11 +26,12 @@ import java.rmi.UnexpectedException;
  */
 public class TestBase  {
 
-    public String buildTag = System.getenv("BUILD_TAG");
+    public String buildTag = System.getenv("GE_BUILD_TAG");
+    /* Build tag is optional */
 
-    public String username = System.getenv("SAUCE_USERNAME");
+    public String username = System.getenv("GE_USERNAME");
 
-    public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
+    public String accesskey = System.getenv("GE_ACCESS_KEY");
 
     /**
      * ThreadLocal variable which contains the  {@link WebDriver} instance which is used to perform browser interactions with.
@@ -51,12 +52,22 @@ public class TestBase  {
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
-                new Object[]{"MicrosoftEdge", "18.17763", "Windows 10"},
+       /*         new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
                 new Object[]{"firefox", "latest", "Windows 10"},
-                new Object[]{"internet explorer", "11.0", "Windows 8.1"},
+                new Object[]{"chrome", "latest", "macOS 10.13"},
+                new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
+                new Object[]{"firefox", "latest-1", "Windows 10"},
+                new Object[]{"chrome", "latest-1", "macOS 10.13"},
+                new Object[]{"internet explorer", "latest", "Windows 8.1"},
+                new Object[]{"internet explorer", "latest-1", "Windows 8.1"},
                 new Object[]{"safari", "12", "macOS 10.13"},
                 new Object[]{"chrome", "latest", "macOS 10.13"},
-                new Object[]{"firefox", "latest-1", "Windows 10"},
+                new Object[]{"firefox", "latest", "Windows 10"},
+                new Object[]{"safari", "latest-1", "macOS 10.13"},
+                new Object[]{"chrome", "latest-1", "macOS 10.13"},
+
+        */
+                new Object[]{"firefox", "latest-1", "Windows 10"}
         };
     }
 

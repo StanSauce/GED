@@ -9,20 +9,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GuineaPigPage {
 
-    @FindBy(linkText = "i am a link")
+    @FindBy(linkText = "Read our response")
     private WebElement theActiveLink;
 
-    @FindBy(id = "your_comments")
-    private WebElement yourCommentsSpan;
+    @FindBy(id= "Email")
+    private WebElement emailBox;
 
-    @FindBy(id = "comments")
-    private WebElement commentsTextAreaInput;
-
-    @FindBy(id = "submit")
-    private WebElement submitButton;
 
     public WebDriver driver;
-    public static String url = "https://saucelabs-sample-test-frameworks.github.io/training-test-page";
+    public static String url = "https://www.ge.com/digital";
+    public static String contactURL = "https://www.ge.com/digital/lp/sales-contact-me";
 
     public static GuineaPigPage visitPage(WebDriver driver) {
         GuineaPigPage page = new GuineaPigPage(driver);
@@ -43,18 +39,25 @@ public class GuineaPigPage {
         theActiveLink.click();
     }
 
-    public void submitComment(String text) {
-        commentsTextAreaInput.sendKeys(text);
-        submitButton.click();
+    public void followContactLink(){ this.driver.get(contactURL);}
+
+    public void submitEmail(String text) {
+        emailBox.sendKeys(text);
+      //  submitButton.click();
     }
 
-    public String getSubmittedCommentText() {
-        return yourCommentsSpan.getText();
-    }
-
-    public boolean isOnPage() {
-        String title = "I am a page title - Sauce Labs";
+    public boolean isOnHomePage() {
+        String title = "GE Digital | Putting industrial data to work.";
         return driver.getTitle() == title;
     }
 
+    public boolean isOnCovidPage() {
+        String title = "Supporting Our Customers in Response to COVID-19 | GE Digital";
+        return driver.getTitle() == title;
+    }
+
+    public String emailInForm(){
+        String inForm = emailBox.getAttribute("value");
+        return inForm;
+    }
 }
