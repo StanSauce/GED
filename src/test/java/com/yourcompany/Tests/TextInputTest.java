@@ -23,7 +23,7 @@ public class TextInputTest extends TestBase {
      * @throws InvalidElementStateException
      */
     @org.testng.annotations.Test(dataProvider = "hardCodedBrowsers")
-    public void verifyCommentInputTest(String browser, String version, String os, Method method)
+    public void enterEmailTest(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
@@ -33,8 +33,14 @@ public class TextInputTest extends TestBase {
         this.annotate("Visiting  page...");
         GuineaPigPage page = GuineaPigPage.visitPage(driver);
 
+        this.annotate("Accept Cookies");
+        page.acceptCookies();
+
         this.annotate("Load Contact Page");
         page.followContactLink();
+
+
+
 
         this.annotate(String.format("Enter Email: \"%s\"", emailText));
         page.submitEmail(emailText);

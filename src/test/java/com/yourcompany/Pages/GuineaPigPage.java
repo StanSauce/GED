@@ -12,9 +12,13 @@ public class GuineaPigPage {
     @FindBy(linkText = "Read our response")
     private WebElement theActiveLink;
 
+
     @FindBy(id= "Email")
     private WebElement emailBox;
 
+
+    @FindBy(id= "_evidon-accept-button")
+    private WebElement cookieAccept;
 
     public WebDriver driver;
     public static String url = "https://www.ge.com/digital";
@@ -41,7 +45,12 @@ public class GuineaPigPage {
 
     public void followContactLink(){ this.driver.get(contactURL);}
 
+    public void acceptCookies(){
+
+        cookieAccept.click();
+    }
     public void submitEmail(String text) {
+        // 2 Send value to the element
         emailBox.sendKeys(text);
       //  submitButton.click();
     }

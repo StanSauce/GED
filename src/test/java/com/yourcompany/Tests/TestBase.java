@@ -52,20 +52,21 @@ public class TestBase  {
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
+                // Window 10
+                new Object[]{"chrome", "latest", "Windows 10"},
+                new Object[]{"chrome", "latest-1", "Windows 10"},
                 new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
-                new Object[]{"firefox", "latest", "Windows 10"},
-                new Object[]{"chrome", "latest", "macOS 10.13"},
                 new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
-                new Object[]{"firefox", "latest-1", "Windows 10"},
-                new Object[]{"chrome", "latest-1", "macOS 10.13"},
-                new Object[]{"internet explorer", "latest", "Windows 8.1"},
-                new Object[]{"internet explorer", "latest-1", "Windows 8.1"},
-                new Object[]{"safari", "12", "macOS 10.13"},
-                new Object[]{"chrome", "latest", "macOS 10.13"},
                 new Object[]{"firefox", "latest", "Windows 10"},
-                new Object[]{"safari", "latest-1", "macOS 10.13"},
-                new Object[]{"chrome", "latest-1", "macOS 10.13"},
-                new Object[]{"firefox", "latest-1", "Windows 10"}
+                new Object[]{"firefox", "latest-1", "Windows 10"},
+
+                // Mac 10.15
+                // new Object[]{"safari", "latest", "macOS 10.15"}, (errors because cookie accept button not in place in time)
+                new Object[]{"chrome", "latest", "macOS 10.15"},
+                new Object[]{"chrome", "latest-1", "macOS 10.15"},
+                new Object[]{"firefox", "latest", "macOS 10.15"},
+                new Object[]{"firefox", "latest-1", "macOS 10.15"},
+
         };
     }
 

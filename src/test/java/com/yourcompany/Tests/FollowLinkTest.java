@@ -22,7 +22,7 @@ public class FollowLinkTest extends TestBase {
      * @throws InvalidElementStateException
      */
     @Test(dataProvider = "hardCodedBrowsers")
-    public void verifyLinkTest(String browser, String version, String os, Method method)
+    public void verifyContactLinkTest(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 
         //create webdriver session
@@ -31,6 +31,9 @@ public class FollowLinkTest extends TestBase {
 
         this.annotate("Visiting Page...");
         GuineaPigPage page = GuineaPigPage.visitPage(driver);
+
+        this.annotate("Accept Cookies");
+        page.acceptCookies();
 
         this.annotate("Clicking on link...");
         page.followContactLink();
